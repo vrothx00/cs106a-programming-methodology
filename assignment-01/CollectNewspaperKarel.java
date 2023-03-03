@@ -8,10 +8,53 @@
  * to its initial position in the upper left corner of the house.
  */
 
-import stanford.karel.*;
+ import stanford.karel.*;
 
-public class CollectNewspaperKarel extends SuperKarel {
+ public class CollectNewspaperKarel extends SuperKarel {
+	 public void run(){
+		 faceEast();
+		 moveToNewspaper();
+		 pickUpNewspaper();
+		 goToHome();
+	 }
 
-	// You fill in this part
+	 private void faceEast(){
+		 if(facingWest()){
+			 turnAround();
+		 }
+		 if(facingNorth()){
+			 turnRight();
+		 }
+		 if(facingWest()){
+			 turnLeft();
+		 }
+	 }
 
-}
+	 private void moveToNewspaper(){
+		 moveToWall();
+		 turnRight();
+		 move();
+		 turnLeft();
+		 move();
+	 }
+
+	 private void pickUpNewspaper(){
+		 pickBeeper();
+	 }
+
+	 private void goToHome(){
+		 turnAround();
+		 move();
+		 turnRight();
+		 move();
+		 turnLeft();
+		 moveToWall();
+		 faceEast();
+	 }
+
+	 private void moveToWall(){
+		 while(frontIsClear()){
+			 move();
+		 }
+	 }
+ }
