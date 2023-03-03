@@ -10,8 +10,6 @@
 
 import stanford.karel.*;
 
-import stanford.karel.*;
-
 public class StoneMasonKarel extends SuperKarel {
 	public void run(){
 		while(frontIsClear()){
