@@ -7,10 +7,45 @@
  * worlds supplied in the starter folder.
  */
 
-import stanford.karel.*;
+ import stanford.karel.*;
 
-public class CheckerboardKarel extends SuperKarel {
+ public class CheckerboardKarel extends SuperKarel {
+	 public void run() {
+		 drawRow();
+		 while(leftIsClear()){
+			 repositionForRowToWest();
+			 drawRow();
+			 if(rightIsClear()){
+				 repositionForRowToEast();
+				 drawRow();
+			 }
+			 else {
+				 turnRight();
+			 }
+		 }
+	 }
 
-	// You fill in this part
+	 private void drawRow(){
+		 while(frontIsClear()){
+			 putBeeper();
+			 if(frontIsClear()){
+				 move();
+				 if(frontIsClear()){
+					 move();
+				 }
+			 }
+		 }
+	 }
 
-}
+	 private void repositionForRowToWest(){
+		 turnLeft();
+		 move();
+		 turnLeft();
+	 }
+
+	 private void repositionForRowToEast(){
+		 turnRight();
+		 move();
+		 turnRight();
+	 }
+ }
